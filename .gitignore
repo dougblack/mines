@@ -1,0 +1,9 @@
+# All swap files
+*.swp
+# libgaio.a
+*.a
+# crt0.o
+*.o
+*.ob
+# generated files
+Tetris.*
