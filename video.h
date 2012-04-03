@@ -28,9 +28,11 @@
 #define SCANLINECOUNTER (*(unsigned short *) 0x4000006)
 
 extern u16 *videoBuffer;
-extern int field[20][20];
+extern int field[10][10];
 
 void setPixel(u16 r, u16 c, u8 color);
 void drawRect4(int r, int c, int width, int height, u8 color);
 void drawImage4(int r, int c, int width, int height, const u8* image);
 void fillScreen4(u8 index);
+void drawDiscoveredField();
+void drawFieldBorders();

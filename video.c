@@ -5,20 +5,17 @@
 u16 *videoBuffer = (u16*) 0x6000000;
 
 // Sets the pixel at row r, column c to color
-void setPixel(u16 r, u16 c, u8 color)
+void setPixel(u16 row, u16 col, u8 index)
 {
-	u16 pixel = r*240 + c;
-	u16 offset = pixel >> 1;
-	u16 ts = videoBuffer[offset];
-	if (c & 1)
+	int whichPixel = OFFSET(row, col, 240);
+	int whichShort = whichPixel/2;
+	if(col & 1)
 	{
-		// odd column
-		videoBuffer[offset] = (color << 8) | (ts & 0x00FF);
+		videoBuffer[whichShort] = (videoBuffer[whichShort] & 0x00FF) | (index << 8);
 	}
 	else
 	{
-		// even column
-		videoBuffer[offset] = (ts & 0x00FF) | color;
+		videoBuffer[whichShort] = (videoBuffer[whichShort] & 0xFF00) | (index);
 	}
 }
 
@@ -54,4 +51,41 @@ void fillScreen4(u8 index)
 	DMA[3].src = &color;
 	DMA[3].dst = videoBuffer;
 	DMA[3].cnt = 19200 | DMA_ON | DMA_SOURCE_FIXED;
+}
+
+void drawDiscoveredField()
+{
+	drawFieldBorders();	
+
+}
+
+void drawFieldBorders()
+{
+	for (int i=10; i<=150; i++)
+	{
+		setPixel(i,50, 1);
+		setPixel(i,190, 1);
+	}
+	for (int i=50; i<=190; i++)
+	{
+		setPixel(10, i, 1);
+		setPixel(150, i, 1);
+	}
+	for (int x=1; x<10; x++)
+	{
+		for (int i=10; i<=150; i++) {
+			setPixel(i, 50+(x*14), 1);
+		}
+		for (int i=50; i<=190; i++) {
+			setPixel(10+(x*14),i,1);
+		}
+	}
+}
+
+void drawIndicator(int r, int c) {
+	
+	for (int i=1;i<14;i++)
+	{
+	}
+
 }

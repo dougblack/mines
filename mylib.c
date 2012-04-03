@@ -1,6 +1,8 @@
 // mylib.c
 
 int __qran_seed = 42;
+int field[20][20];
+int discoveredField[20][20];
 // Seed the generator
 int sqran(int seed)
 {
