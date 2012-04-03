@@ -4,18 +4,13 @@
 
 #define MINE_NUM	10	
 
-int indicatorRow = 5;
-int indicatorCol = 5;
-int oldIndicatorRow = 5;
-int oldIndicatorCol = 5;
-
 enum {BLACKIDX, REDIDX, BLUEIDX, GREENIDX};
 u16 colors[] = {BLACK, RED, BLUE, GREEN};
+indicator ind = {5, 5, 5, 5}; 
 
 int
 main()
 {
-
 	int numcolors = sizeof(colors) / sizeof(colors[0]);
 	for (int i = 0; i < numcolors; i++)
 	{
@@ -28,44 +23,72 @@ main()
 	drawDiscoveredField();
 	flipPage();
 	drawDiscoveredField();
+	drawIndicator(ind);
+	flipPage();
 	while(1)
 	{
 			keyHandle();
 			waitForVBlank();
-			flipPage();
 	}
-
 }
 
-void keyHandle() {
+void 
+keyHandle() {
 			key_poll();		
-			if (key_hit(KEY_RIGHT)) 
+			int keyHandled = 0;
+			if (key_hit(KEY_RIGHT)) {
 				indicatorMove(1,0);
-			if (key_hit(KEY_LEFT))
+				keyHandled = 1;
+			}
+			if (key_hit(KEY_LEFT)) {
 				indicatorMove(-1,0);
-			if (key_hit(KEY_UP)) 
-				indicatorMove(0,1);
-			if (key_hit(KEY_DOWN))
+				keyHandled = 1;
+			}
+			if (key_hit(KEY_UP)) {
 				indicatorMove(0,-1);
-			if (key_hit(KEY_A)) 
+				keyHandled = 1;
+			}
+			if (key_hit(KEY_DOWN)) {
+				indicatorMove(0,1);
+				keyHandled = 1;
+			}
+			if (key_hit(KEY_A))  {
 				sweep();
-			if (key_hit(KEY_B))
+				keyHandled = 1;
+			}
+			if (key_hit(KEY_B)) {
 				placeFlag();
-			if (key_hit(KEY_START))
+				keyHandled = 1;
+			}
+			if (key_hit(KEY_START)) {
 				pause();
+				keyHandled = 1;
+			}
+			if (keyHandled) {
+				clearIndicator(ind);
+				drawIndicator(ind);	
+				flipPage();
+				clearIndicator(ind);
+			}
 }
 
-void waitForVBlank()
+void 
+waitForVBlank()
 {
 	while(SCANLINECOUNTER > 160);
 	while(SCANLINECOUNTER < 160);
 }
 
-void indicatorMove(int delta_x, int delta_y) {
-
+void 
+indicatorMove(int delta_x, int delta_y) {
+	ind.old_r = ind.r;
+	ind.old_c = ind.c;
+	ind.r += delta_y;
+	ind.c += delta_x;
 }
 
-void flipPage() {
+void 
+flipPage() {
 
 	if (REG_DISPCTL & BUFFER1FLAG)
 	{
@@ -80,10 +103,17 @@ void flipPage() {
 
 }
 
-void sweep() {}
-void placeFlag() {}
-void pause() {}
-void placeMines() {
+void 
+sweep() {}
+
+void 
+placeFlag() {}
+
+void 
+pause() {}
+
+void 
+placeMines() {
 	int minesPlaced = 0;
 	while (minesPlaced < MINE_NUM) {
 		int x = qran_range(0,10);
@@ -97,7 +127,8 @@ void placeMines() {
 	DEBUG_PRINT("\n=======================================\n");
 }
 
-void setMineCounts() {
+void 
+setMineCounts() {
 	for (int x=0; x<10; x++)
 	{
 		for (int y=0; y<10; y++)
@@ -142,14 +173,16 @@ void setMineCounts() {
 	printField();
 }
 
-int checkCell(int cell) {
+int 
+checkCell(int cell) {
 	if (cell == 9) {
 		return 1;
 	}
 	return 0;
 }
 
-void printField() {
+void 
+printField() {
 	for (int x=0; x<10; x++)
 	{
 		for (int y=0; y<10; y++)

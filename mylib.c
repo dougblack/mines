@@ -23,3 +23,4 @@ int qran_range(int min, int max)
 {
 	return (qran() * (max-min)>>15) + min;
 }
+

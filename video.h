@@ -36,3 +36,6 @@ void drawImage4(int r, int c, int width, int height, const u8* image);
 void fillScreen4(u8 index);
 void drawDiscoveredField();
 void drawFieldBorders();
+void drawIndicator(indicator ind);
+void clearIndicator(indicator ind);
+u16* buffer_hidden();
