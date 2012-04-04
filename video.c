@@ -36,14 +36,27 @@ void drawRect4(int r, int c, int width, int height, u8 index)
 }
 
 // Draws the image using DMA
-void drawImage4(int r, int c, int width, int height, const u8* image)
+void drawImage4(int r, int c, int width, int height, const u16* image)
 {
 	u16* hiddenBuffer = buffer_hidden();
-	int rowWidth = width;
+	int rowWidth = (width >> 1);
 	for (int i = 0; i < height; i++) {
-		const u8* row = image+i*rowWidth;
-		u16 *dest = hiddenBuffer+((r+i)*240+c);
-		dmacpy(dest, row, rowWidth);
+		const u16* row = image+i*rowWidth;
+		DMA[3].cnt = 0;
+		DMA[3].src = row;
+		DMA[3].dst = hiddenBuffer + (((r+i)*240 + c) >> 1);
+		DMA[3].cnt = (rowWidth) | DMA_ON;
+	}
+}
+
+void drawDougImage(int r, int c, int width, int height, const u8* image)
+{
+	for (int x=0; x < height; x++)
+	{
+		for (int y=0; y < width; y++)
+		{
+			setPixel(r+x, c+y, image[height*x+y]);
+		}
 	}
 }
 
@@ -59,12 +72,12 @@ void fillScreen4(u8 index)
 
 void drawDiscoveredField()
 {
-	drawFieldBorders();	
 	for (int x=0; x<10; x++)
 	{
 		for (int y=0; y<10; y++)
 		{
-			drawCell(x, y, field[x][y]);	
+			drawCell(x, y, discoveredField[x][y]);	
+			//drawCell(x, y, field[x][y]);	
 		}
 	}
 }
@@ -132,9 +145,36 @@ buffer_hidden()
 
 void drawCell(int r, int c, int cellValue)
 {
-
+	int x = 10+r*14+2;
+	int y = 50+c*14+3;
 	switch (cellValue) {
-		case 0:
+		case 1:
+			drawDougImage(x, y, 10, 10,(u8*)onePic);
+			break;
+		case 2:
+			drawDougImage(x, y, 10, 10,(u8*)twoPic);
+			break;
+		case 3:
+			drawDougImage(x, y, 10, 10,(u8*)threePic);
+			break;
+		case 4:
+			drawDougImage(x, y, 10, 10,(u8*)fourPic);
+			break;
+		case 5:
+			drawDougImage(x, y, 10, 10,(u8*)fivePic);
+			break;
+		case 6:
+			drawDougImage(x, y, 10, 10,(u8*)sixPic);
+			break;
+		case 7:
+			drawDougImage(x, y, 10, 10,(u8*)flagPic);
+			break;
+		case 8:
+			drawRect4(x,y,12,12,3);
+			break;
+		case 9:
+			drawDougImage(x, y, 10, 10,(u8*)minePic); 
+			break;
 	}
 
 }

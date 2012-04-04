@@ -7,6 +7,7 @@
 enum {BLACKIDX, REDIDX, BLUEIDX, GREENIDX};
 u16 colors[] = {BLACK, RED, BLUE, GREEN};
 indicator ind = {5, 5, 5, 5}; 
+int gameover = 0;
 
 int
 main()
@@ -21,11 +22,13 @@ main()
 	placeMines();
 	setMineCounts();
 	drawDiscoveredField();
+	drawFieldBorders();
 	flipPage();
 	drawDiscoveredField();
+	drawFieldBorders();
 	drawIndicator(ind);
 	flipPage();
-	while(1)
+	while(!gameover)
 	{
 			keyHandle();
 			waitForVBlank();
@@ -53,7 +56,8 @@ keyHandle() {
 				keyHandled = 1;
 			}
 			if (key_hit(KEY_A))  {
-				sweep();
+				sweep(ind.r, ind.c);
+				drawDiscoveredField();
 				keyHandled = 1;
 			}
 			if (key_hit(KEY_B)) {
@@ -69,7 +73,53 @@ keyHandle() {
 				drawIndicator(ind);	
 				flipPage();
 				clearIndicator(ind);
+				drawDiscoveredField();
 			}
+}
+
+void sweep(int r, int c) 
+{
+	if (field[r][c] == 9)
+	{
+		gameOver();
+	}
+	if ((discoveredField[r][c] == 0) || (discoveredField[r][c] == 7)) {
+			int cell = field[r][c];
+			if (cell == 0) {
+				int checkLeft = 1;
+				int checkRight = 1;
+				int checkBottom = 1;
+				int checkTop = 1;
+				cell = 8;
+				discoveredField[r][c] = 8;
+				if (c==0)	checkLeft = 0;
+				else if (c==9)	checkRight = 0;
+				if (r==0)	checkTop = 0;
+				else if (r==9)	checkBottom = 0;
+
+				if (checkLeft) 
+				{
+					sweep(r,c-1);
+					if (checkTop)
+						sweep(r-1,c-1);
+					if (checkBottom)
+						sweep(r+1,c-1);
+				}
+				if (checkRight)
+				{
+					sweep(r,c+1);
+					if (checkTop)
+						sweep(r-1,c+1);
+					if (checkBottom)
+						sweep(r+1,c+1);
+				}
+				if (checkTop)
+					sweep(r-1,c);
+				if (checkBottom)
+					sweep(r+1,c);
+			}
+			discoveredField[r][c] = cell;
+	}
 }
 
 void 
@@ -104,10 +154,10 @@ flipPage() {
 }
 
 void 
-sweep() {}
-
-void 
-placeFlag() {}
+placeFlag() {
+	discoveredField[ind.r][ind.c] = 7;	
+	drawDiscoveredField();
+}
 
 void 
 pause() {}
@@ -194,4 +244,18 @@ printField() {
 		}
 		DEBUG_PRINT("\n");
 	}
+}
+
+void 
+gameOver() {
+	gameover = 1;
+	for (int x=0; x<10; x++)
+	{
+		for (int y=0; y<10; y++)
+		{
+			discoveredField[x][y] = (field[x][y] == 0) ? 8 : field[x][y];
+		}
+	}
+	drawDiscoveredField();
+
 }

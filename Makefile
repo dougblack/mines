@@ -11,12 +11,12 @@ PROGNAME = Mines
 
 # The object files you want to compile into your program
 # This should be a space (SPACE!) separated list of .o files
-OFILES = dma.o input.o main.o mylib.o video.o
+OFILES = dma.o input.o main.o mylib.o video.o images.o
 
 # The header files you have created.
 # This is necessary to determine when to recompile for files.
 # This should be a space (SPACE!) separated list of .h files
-HFILES = dma.h input.h main.h mylib.h video.h 
+HFILES = dma.h input.h main.h mylib.h video.h images.h
 
 ################################################################################
 # These are various settings used to make the GBA toolchain work
