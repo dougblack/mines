@@ -8,6 +8,7 @@ enum {BLACKIDX, REDIDX, BLUEIDX, GREENIDX};
 u16 colors[] = {BLACK, RED, BLUE, GREEN};
 indicator ind = {5, 5, 5, 5}; 
 int gameover = 0;
+int cellsSwept = 0;
 
 int
 main()
@@ -118,8 +119,20 @@ void sweep(int r, int c)
 				if (checkBottom)
 					sweep(r+1,c);
 			}
+			cellsSwept++;
 			discoveredField[r][c] = cell;
+			if (cellsSwept==90)
+			{
+				win();
+			}
 	}
+}
+
+void 
+win()
+{
+	gameover = 1;
+	drawRect4(10,10,10,10,1);	
 }
 
 void 
@@ -131,10 +144,15 @@ waitForVBlank()
 
 void 
 indicatorMove(int delta_x, int delta_y) {
-	ind.old_r = ind.r;
-	ind.old_c = ind.c;
-	ind.r += delta_y;
-	ind.c += delta_x;
+
+	int newR = ind.r + delta_y;
+	int newC = ind.c + delta_x;
+	if ((newR >= 0) && (newR <= 9) && (newC >= 0) && (newC <= 9)) {
+		ind.old_r = ind.r;
+		ind.old_c = ind.c;
+		ind.r = newR;
+		ind.c = newC;
+	}
 }
 
 void 
