@@ -86,21 +86,21 @@ void drawFieldBorders()
 
 	for (int i=10; i<=150; i++)
 	{
-		setPixel(i,50, 2);
-		setPixel(i,190, 2);
+		setPixel(i,50, 6);
+		setPixel(i,190, 6);
 	}
 	for (int i=50; i<=190; i++)
 	{
-		setPixel(10, i, 2);
-		setPixel(150, i, 2);
+		setPixel(10, i, 6);
+		setPixel(150, i, 6);
 	}
 	for (int x=1; x<10; x++)
 	{
 		for (int i=10; i<=150; i++) {
-			setPixel(i, 50+(x*14), 2);
+			setPixel(i, 50+(x*14), 6);
 		}
 		for (int i=50; i<=190; i++) {
-			setPixel(10+(x*14),i,2);
+			setPixel(10+(x*14),i,6);
 		}
 	}
 }
@@ -170,7 +170,7 @@ void drawCell(int r, int c, int cellValue)
 			drawDougImage(x, y, 10, 10,(u8*)flagPic);
 			break;
 		case 8:
-			drawRect4(x,y,12,12,3);
+			drawRect4(x,y,12,12,6);
 			break;
 		case 9:
 			drawDougImage(x, y, 10, 10,(u8*)minePic); 

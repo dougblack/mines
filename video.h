@@ -25,6 +25,7 @@
 #define LIGHTGREEN      RGB(0,10,0)
 #define LIGHTRED        RGB(31,10,0)
 #define BLACK			RGB(0,0,0) 
+#define LIGHTGRAY		RGB(15,15,15)
 
 #define SCANLINECOUNTER (*(unsigned short *) 0x4000006)
 

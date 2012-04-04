@@ -2,10 +2,10 @@
 
 #include "main.h"
 
-#define MINE_NUM	10	
+#define MINE_NUM	20	
 
-enum {BLACKIDX, REDIDX, BLUEIDX, GREENIDX};
-u16 colors[] = {BLACK, RED, BLUE, GREEN};
+enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};
+u16 colors[] = {BLACK, WHITE, RED, BLUE, GREEN, YELLOW, LIGHTGRAY};
 indicator ind = {5, 5, 5, 5}; 
 int gameover = 0;
 int cellsSwept = 0;
