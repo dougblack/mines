@@ -19,3 +19,5 @@ void setMineCounts();
 int checkCell(int cell);
 void gameOver();
 void win();
+void drawExplosion(int r, int c);
+void waitFourishSeconds();

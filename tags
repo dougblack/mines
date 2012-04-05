@@ -1,0 +1,190 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BG2_ENABLE	video.h	9;"	d
+BLACK	video.h	27;"	d
+BLACKIDX	main.c	/^enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};$/;"	e	enum:__anon3	file:
+BLUE	video.h	18;"	d
+BLUEIDX	main.c	/^enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};$/;"	e	enum:__anon3	file:
+BUFFER0	video.h	10;"	d
+BUFFER1	video.h	11;"	d
+BUFFER1FLAG	video.h	12;"	d
+CYAN	video.h	22;"	d
+DMA	dma.h	62;"	d
+DMAREC	dma.h	/^} DMAREC;$/;"	t	typeref:struct:__anon1
+DMATRANSFER	dma.h	5;"	d
+DMA_16	dma.h	51;"	d
+DMA_32	dma.h	52;"	d
+DMA_AT_HBLANK	dma.h	56;"	d
+DMA_AT_REFRESH	dma.h	57;"	d
+DMA_AT_VBLANK	dma.h	55;"	d
+DMA_CHANNEL_0	dma.h	33;"	d
+DMA_CHANNEL_1	dma.h	34;"	d
+DMA_CHANNEL_2	dma.h	35;"	d
+DMA_CHANNEL_3	dma.h	36;"	d
+DMA_DESTINATION_DECREMENT	dma.h	41;"	d
+DMA_DESTINATION_FIXED	dma.h	42;"	d
+DMA_DESTINATION_INCREMENT	dma.h	40;"	d
+DMA_DESTINATION_RESET	dma.h	43;"	d
+DMA_IRQ	dma.h	59;"	d
+DMA_NOW	dma.h	54;"	d
+DMA_ON	dma.h	60;"	d
+DMA_REPEAT	dma.h	49;"	d
+DMA_SOURCE_DECREMENT	dma.h	46;"	d
+DMA_SOURCE_FIXED	dma.h	47;"	d
+DMA_SOURCE_INCREMENT	dma.h	45;"	d
+GREEN	video.h	19;"	d
+GREENIDX	main.c	/^enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};$/;"	e	enum:__anon3	file:
+INT_BUTTON	input.h	47;"	d
+INT_BUTTON_ENABLE	input.h	32;"	d
+INT_CART	input.h	48;"	d
+INT_COM	input.h	42;"	d
+INT_DMA0	input.h	43;"	d
+INT_DMA1	input.h	44;"	d
+INT_DMA2	input.h	45;"	d
+INT_DMA3	input.h	46;"	d
+INT_HB	input.h	36;"	d
+INT_T0	input.h	38;"	d
+INT_T1	input.h	39;"	d
+INT_T2	input.h	40;"	d
+INT_T3	input.h	41;"	d
+INT_VB	input.h	35;"	d
+INT_VBLANK_ENABLE	input.h	31;"	d
+INT_VC	input.h	37;"	d
+KEY_A	input.h	6;"	d
+KEY_B	input.h	7;"	d
+KEY_DOWN	input.h	13;"	d
+KEY_DOWN_NOW	input.h	19;"	d
+KEY_L	input.h	15;"	d
+KEY_LEFT	input.h	11;"	d
+KEY_MASK	input.h	17;"	d
+KEY_R	input.h	14;"	d
+KEY_RIGHT	input.h	10;"	d
+KEY_SELECT	input.h	8;"	d
+KEY_START	input.h	9;"	d
+KEY_UP	input.h	12;"	d
+LIGHTBLUE	video.h	24;"	d
+LIGHTGRAY	video.h	28;"	d
+LIGHTGRAYIDX	main.c	/^enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};$/;"	e	enum:__anon3	file:
+LIGHTGREEN	video.h	25;"	d
+LIGHTRED	video.h	26;"	d
+MAGENTA	video.h	21;"	d
+MINE_NUM	main.c	5;"	d	file:
+MODE3	video.h	7;"	d
+MODE4	video.h	8;"	d
+OFFSET	mylib.h	3;"	d
+PALETTE	video.h	13;"	d
+RED	video.h	17;"	d
+REDIDX	main.c	/^enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};$/;"	e	enum:__anon3	file:
+REG_DISPCTL	video.h	6;"	d
+REG_DISPSTAT	input.h	26;"	d
+REG_DMA0CNT	dma.h	15;"	d
+REG_DMA0DAD	dma.h	14;"	d
+REG_DMA0SAD	dma.h	13;"	d
+REG_DMA1CNT	dma.h	20;"	d
+REG_DMA1DAD	dma.h	19;"	d
+REG_DMA1SAD	dma.h	18;"	d
+REG_DMA2CNT	dma.h	25;"	d
+REG_DMA2DAD	dma.h	24;"	d
+REG_DMA2SAD	dma.h	23;"	d
+REG_DMA3CNT	dma.h	30;"	d
+REG_DMA3DAD	dma.h	29;"	d
+REG_DMA3SAD	dma.h	28;"	d
+REG_IE	input.h	23;"	d
+REG_IF	input.h	24;"	d
+REG_IME	input.h	22;"	d
+REG_INTERRUPT	input.h	25;"	d
+REG_KEYCNT	input.h	28;"	d
+REG_KEYINPUT	input.h	27;"	d
+RGB	video.h	16;"	d
+SCANLINECOUNTER	video.h	30;"	d
+WHITE	video.h	23;"	d
+WHITEIDX	main.c	/^enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};$/;"	e	enum:__anon3	file:
+YELLOW	video.h	20;"	d
+YELLOWIDX	main.c	/^enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};$/;"	e	enum:__anon3	file:
+__key_curr	input.h	/^u16 __key_prev, __key_curr;$/;"	v
+__key_prev	input.h	/^u16 __key_prev, __key_curr;$/;"	v
+__qran_seed	mylib.c	/^int __qran_seed = 10;$/;"	v
+buffer_hidden	video.c	/^buffer_hidden() $/;"	f
+c	mylib.h	/^	int c;$/;"	m	struct:__anon2
+cellsSwept	main.c	/^int cellsSwept = 0;$/;"	v
+checkCell	main.c	/^checkCell(int cell) {$/;"	f
+clearIndicator	video.c	/^void clearIndicator(indicator ind) {$/;"	f
+cnt	dma.h	/^	volatile unsigned int cnt;$/;"	m	struct:__anon1
+colors	main.c	/^u16 colors[] = {BLACK, WHITE, RED, BLUE, GREEN, YELLOW, LIGHTGRAY};$/;"	v
+correctFlags	main.c	/^int correctFlags = 0;$/;"	v
+discoveredField	mylib.c	/^int discoveredField[20][20];$/;"	v
+dmacpy	dma.c	/^void dmacpy(void *dst, const void *src, u16 count)$/;"	f
+drawCell	video.c	/^void drawCell(int r, int c, int cellValue)$/;"	f
+drawDiscoveredField	video.c	/^void drawDiscoveredField()$/;"	f
+drawDougImage	video.c	/^void drawDougImage(int r, int c, int width, int height, const u8* image)$/;"	f
+drawExplosion	main.c	/^void drawExplosion(int r, int c)$/;"	f
+drawFieldBorders	video.c	/^void drawFieldBorders()$/;"	f
+drawImage4	video.c	/^void drawImage4(int r, int c, int width, int height, const u16* image)$/;"	f
+drawIndicator	video.c	/^void drawIndicator(indicator ind) {$/;"	f
+drawRect4	video.c	/^void drawRect4(int r, int c, int width, int height, u8 index)$/;"	f
+dst	dma.h	/^	volatile void *dst;$/;"	m	struct:__anon1
+field	mylib.c	/^int field[20][20];$/;"	v
+fillScreen4	video.c	/^void fillScreen4(u8 index)$/;"	f
+fivePic	images.c	/^const unsigned char fivePic[100] = {$/;"	v
+flagPic	images.c	/^const unsigned char flagPic[100] = {$/;"	v
+flipPage	main.c	/^flipPage() {$/;"	f
+fourPic	images.c	/^const unsigned char fourPic[100] = {$/;"	v
+gameOver	main.c	/^gameOver() {$/;"	f
+gameoverscreen	images.c	/^const unsigned short gameoverscreen[19200] =$/;"	v
+ind	main.c	/^indicator ind = {5, 5, 5, 5}; $/;"	v
+indicator	mylib.h	/^} indicator;$/;"	t	typeref:struct:__anon2
+indicatorMove	main.c	/^indicatorMove(int delta_x, int delta_y) {$/;"	f
+keyHandle	main.c	/^keyHandle() {$/;"	f
+key_curr_state	input.c	/^u32 key_curr_state()		{ return __key_curr; }$/;"	f
+key_held	input.c	/^u32 key_held(u32 key)		{ return (__key_curr & __key_prev) & key; }$/;"	f
+key_hit	input.c	/^u32 key_hit(u32 key)		{ return (__key_curr & ~__key_prev) & key; }$/;"	f
+key_is_down	input.c	/^u32 key_is_down(u32 key)	{ return __key_curr & key; }$/;"	f
+key_is_up	input.c	/^u32 key_is_up(u32 key)		{ return ~__key_curr & key; }$/;"	f
+key_poll	input.c	/^void key_poll()$/;"	f
+key_prev_state	input.c	/^u32 key_prev_state()		{ return __key_prev; }$/;"	f
+key_released	input.c	/^u32 key_released(u32 key)	{ return (~__key_curr & __key_prev) & key; }$/;"	f
+key_transit	input.c	/^u32 key_transit(u32 key)	{ return (__key_curr ^ __key_prev) & key; }$/;"	f
+key_was_down	input.c	/^u32 key_was_down(u32 key)	{ return __key_prev & key; }$/;"	f
+key_was_up	input.c	/^u32 key_was_up(u32 key)		{ return ~__key_curr & key; }$/;"	f
+main	main.c	/^main()$/;"	f
+minePic	images.c	/^const unsigned char minePic[100] = {$/;"	v
+minefive	images.c	/^const unsigned short minefive[50] =$/;"	v
+minefour	images.c	/^const unsigned short minefour[50] =$/;"	v
+mineone	images.c	/^const unsigned short mineone[50] =$/;"	v
+minethree	images.c	/^const unsigned short minethree[50] =$/;"	v
+minetwo	images.c	/^const unsigned short minetwo[50] =$/;"	v
+old_c	mylib.h	/^	int old_c;$/;"	m	struct:__anon2
+old_r	mylib.h	/^	int old_r;$/;"	m	struct:__anon2
+onePic	images.c	/^const unsigned char onePic[100] = {$/;"	v
+pause	main.c	/^pause() {}$/;"	f
+placeFlag	main.c	/^placeFlag() {$/;"	f
+placeMines	main.c	/^placeMines() {$/;"	f
+playerloses	main.c	/^int playerloses = 0;$/;"	v
+playerwins	main.c	/^int playerwins = 0;$/;"	v
+printField	main.c	/^printField() {$/;"	f
+qran	mylib.c	/^int qran()$/;"	f
+qran_range	mylib.c	/^int qran_range(int min, int max)$/;"	f
+r	mylib.h	/^	int r;$/;"	m	struct:__anon2
+seed	main.c	/^int seed = 0;$/;"	v
+setMineCounts	main.c	/^setMineCounts() {$/;"	f
+setPixel	video.c	/^void setPixel(u16 row, u16 col, u8 index)$/;"	f
+showTitle	main.c	/^int showTitle = 1;$/;"	v
+sixPic	images.c	/^const unsigned char sixPic[100] = {$/;"	v
+sqran	mylib.c	/^int sqran(int seed)$/;"	f
+src	dma.h	/^	const volatile void *src;$/;"	m	struct:__anon1
+sweep	main.c	/^void sweep(int r, int c) $/;"	f
+threePic	images.c	/^const unsigned char threePic[100] = {$/;"	v
+title	images.c	/^const unsigned short title[19200] =$/;"	v
+twoPic	images.c	/^const unsigned char twoPic[100] = {$/;"	v
+u16	mylib.h	/^typedef unsigned short u16;$/;"	t
+u32	mylib.h	/^typedef unsigned int u32;$/;"	t
+u8	mylib.h	/^typedef unsigned char u8;$/;"	t
+videoBuffer	video.c	/^u16 *videoBuffer = (u16*) 0x6000000;$/;"	v
+waitForVBlank	main.c	/^waitForVBlank()$/;"	f
+waitFourishSeconds	main.c	/^void waitFourishSeconds()$/;"	f
+win	main.c	/^win()$/;"	f
+winscreen	images.c	/^const unsigned short winscreen[19200] =$/;"	v
