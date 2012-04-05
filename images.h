@@ -7,7 +7,7 @@ extern const unsigned char fourPic[100];
 extern const unsigned char fivePic[100];
 extern const unsigned char sixPic[100];
 extern const unsigned char minePic[100];
-extern const unsigned char flagPic[100];
+extern const unsigned short flagPic[50];
 extern const unsigned short mineone[50];
 extern const unsigned short minetwo[50];
 extern const unsigned short minethree[50];

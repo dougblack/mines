@@ -167,7 +167,7 @@ void drawCell(int r, int c, int cellValue)
             drawDougImage(x, y, 10, 10,(u8*)sixPic);
             break;
         case 7:
-            drawDougImage(x, y, 10, 10,(u8*)flagPic);
+            drawImage4(x, y, 10, 10,flagPic);
             break;
         case 8:
             drawRect4(x,y,12,12,6);
