@@ -59,3 +59,4 @@ u32 key_transit(u32 key);
 u32 key_held(u32 key);
 u32 key_hit(u32 key);
 u32 key_released(u32 key);
+void reset();

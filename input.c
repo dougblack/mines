@@ -20,4 +20,4 @@ u32 key_transit(u32 key)	{ return (__key_curr ^ __key_prev) & key; }
 u32 key_held(u32 key)		{ return (__key_curr & __key_prev) & key; }
 u32 key_hit(u32 key)		{ return (__key_curr & ~__key_prev) & key; }
 u32 key_released(u32 key)	{ return (~__key_curr & __key_prev) & key; }
-
+void reset()                { __key_prev = 0;}

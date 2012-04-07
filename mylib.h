@@ -14,6 +14,7 @@ typedef unsigned short u16;
 typedef unsigned int u32;
 extern int field[10][10];
 extern int discoveredField[10][10];
+extern int boardSize;
 
 int sqran(int seed);
 int qran();

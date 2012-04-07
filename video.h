@@ -31,6 +31,7 @@
 
 extern u16 *videoBuffer;
 extern int field[10][10];
+extern int boardSize;
 
 void setPixel(u16 r, u16 c, u8 color);
 void drawRect4(int r, int c, int width, int height, u8 color);

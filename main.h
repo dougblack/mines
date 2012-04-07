@@ -4,6 +4,7 @@
 #include <debugging.h>
 
 extern int field[10][10];
+extern int boardSize;
 extern int discoveredField[10][10];
 
 void waitForVBlank();

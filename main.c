@@ -2,7 +2,6 @@
 
 #include "main.h"
 
-
 enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};
 u16 colors[] = {BLACK, WHITE, RED, BLUE, GREEN, YELLOW, LIGHTGRAY};
 indicator ind = {5, 5, 5, 5}; 
@@ -12,8 +11,8 @@ int correctFlags = 0;
 int showTitle = 1;
 int seed = 0;
 int playerwins = 0;
-int MINE_NUM = 10;
-int boardSize = 10;
+int MINE_NUM = 4;
+int boardSize = 4;
 
     int
 main()
@@ -26,45 +25,64 @@ main()
 
     REG_DISPCTL = MODE4 | BG2_ENABLE | BUFFER1FLAG;
 
-    //drawImage4(0,0,240,160,title);
-    drawImage4(0,0,240,160,title);
-    flipPage();
-    while (showTitle){
-        key_poll();
-        if (key_hit(KEY_START)) {
-            showTitle=0;
-        }
-        if (key_hit(KEY_UP)) {
-            MINE_NUM+=5;
-        }
-        seed++;
-    }
-    sqran(seed);
-    fillScreen4(0);
-    flipPage();
-    fillScreen4(0);
-
-    placeMines();
-    setMineCounts();
-    drawDiscoveredField();
-    drawFieldBorders();
-    flipPage();
-    drawDiscoveredField();
-    drawFieldBorders();
-    drawIndicator(ind);
-    flipPage();
-    while(!playerloses && !playerwins)
+    while(1) 
     {
-        keyHandle();
-        waitForVBlank();
-    }
-    
-    if (playerwins)
-        win();
-    else
-        gameOver();
+        drawImage4(0,0,240,160,title);
+        flipPage();
+        while (showTitle){
+            key_poll();
+            if (key_hit(KEY_START)) {
+                showTitle=0;
+            }
+            if (key_hit(KEY_UP)) {
+                MINE_NUM+=5;
+                if(boardSize < 10) boardSize+=3;
+            }
+            seed++;
+        }
+        ind.r = boardSize / 2;
+        ind.c = boardSize / 2;
+        for (int x = 0; x < boardSize; x++) {
+            for (int y = 0; y < boardSize; y++) {
+                discoveredField[x][y] = 0;
+                field[x][y] = 0;
+            }
+        }
+        sqran(seed);
+        fillScreen4(0);
+        flipPage();
+        fillScreen4(0);
 
-    
+        placeMines();
+        setMineCounts();
+        drawDiscoveredField();
+        drawFieldBorders();
+        flipPage();
+        drawDiscoveredField();
+        drawFieldBorders();
+        drawIndicator(ind);
+        flipPage();
+        while(!playerloses && !playerwins)
+        {
+            keyHandle();
+            if (key_hit(KEY_SELECT)) {
+                showTitle = 1;
+                break;
+            }
+            waitForVBlank();
+        }
+
+        if (playerwins)
+            win();
+        else if(playerloses)
+            gameOver();
+
+        showTitle = 1;
+        playerwins = 0;
+        playerloses = 0;
+    }
+
+
 }
 
 void 
@@ -111,7 +129,7 @@ keyHandle() {
 
 void sweep(int r, int c) 
 { 
-    if(r>=0 && r <10 && c>=0 && c<10) {
+    if(r>=0 && r <boardSize && c>=0 && c<boardSize) {
         if (field[r][c] == 9)
         {
             playerloses=1;
@@ -135,7 +153,7 @@ void sweep(int r, int c)
             }
             cellsSwept++;
             discoveredField[r][c] = cell;
-            if (cellsSwept==90)
+            if (cellsSwept==(boardSize * boardSize - MINE_NUM))
             {
                 playerwins = 1;
             }
@@ -148,6 +166,14 @@ win()
 {
     drawImage4(0,0,240,160,winscreen);
     flipPage();
+    int showWinScreen = 1;
+    while (showWinScreen) {
+        key_poll();
+        if (key_hit(KEY_START)) {
+            showWinScreen = 0;
+        }
+    }
+    
 }
 
     void 
@@ -162,7 +188,7 @@ indicatorMove(int delta_x, int delta_y) {
 
     int newR = ind.r + delta_y;
     int newC = ind.c + delta_x;
-    if ((newR >= 0) && (newR <= 9) && (newC >= 0) && (newC <= 9)) {
+    if ((newR >= 0) && (newR < boardSize) && (newC >= 0) && (newC < boardSize)) {
         ind.old_r = ind.r;
         ind.old_c = ind.c;
         ind.r = newR;
@@ -203,8 +229,8 @@ void
 placeMines() {
     int minesPlaced = 0;
     while (minesPlaced < MINE_NUM) {
-        int x = qran_range(0,10);
-        int y = qran_range(0,10);
+        int x = qran_range(0,boardSize);
+        int y = qran_range(0,boardSize);
         if (field[x][y] != 9) {
             field[x][y] = 9;
             minesPlaced++;
@@ -216,9 +242,9 @@ placeMines() {
 
 void 
 setMineCounts() {
-    for (int x=0; x<10; x++)
+    for (int x=0; x<boardSize; x++)
     {
-        for (int y=0; y<10; y++)
+        for (int y=0; y<boardSize; y++)
         {
             int checkLeft = 1;
             int checkRight = 1;
@@ -228,9 +254,9 @@ setMineCounts() {
             {	
                 int cell = 0;
                 if (y==0)	checkLeft = 0;
-                else if (y==9)	checkRight = 0;
+                else if (y==boardSize-1)	checkRight = 0;
                 if (x==0)	checkTop = 0;
-                else if (x==9)	checkBottom = 0;
+                else if (x==boardSize-1)	checkBottom = 0;
 
                 if (checkLeft) 
                 {
@@ -270,9 +296,9 @@ checkCell(int cell) {
 
 void 
 printField() {
-    for (int x=0; x<10; x++)
+    for (int x=0; x<boardSize; x++)
     {
-        for (int y=0; y<10; y++)
+        for (int y=0; y<boardSize; y++)
         {
             if (field[x][y] == 9)
                 DEBUG_PRINT("X, ");
@@ -286,25 +312,31 @@ printField() {
 void 
 gameOver() {
     drawExplosion(ind.r, ind.c);
-    for (int x=0; x<10; x++)
+    for (int x=0; x<boardSize; x++)
     {
-        for (int y=0; y<10; y++)
+        for (int y=0; y<boardSize; y++)
         {
             discoveredField[x][y] = (field[x][y] == 0) ? 8 : field[x][y];
         }
     }
     drawDiscoveredField();
     flipPage();
-    
+
     int showGameOverScreen = 0;
     while (!showGameOverScreen)
     {
         key_poll();
         if (key_hit(KEY_START))
-                showGameOverScreen=1;
+            showGameOverScreen=1;
     } 
     drawImage4(0,0,240,160,gameoverscreen);
     flipPage();
+    while (showGameOverScreen)
+    {
+        key_poll();
+        if (key_hit(KEY_START))
+            showGameOverScreen=0;
+    } 
 }
 
 void drawExplosion(int r, int c)

@@ -72,9 +72,9 @@ void fillScreen4(u8 index)
 
 void drawDiscoveredField()
 {
-    for (int x=0; x<10; x++)
+    for (int x=0; x<boardSize; x++)
     {
-        for (int y=0; y<10; y++)
+        for (int y=0; y<boardSize; y++)
         {
             drawCell(x, y, discoveredField[x][y]);	
             //drawCell(x, y, field[x][y]);	
@@ -83,23 +83,24 @@ void drawDiscoveredField()
 }
 void drawFieldBorders()
 {
-
-    for (int i=10; i<=150; i++)
+    int rightEdge = 10+boardSize*14;
+    int bottomEdge = 50+boardSize*14;
+    for (int i=10; i<=rightEdge; i++)
     {
         setPixel(i,50, 6);
-        setPixel(i,190, 6);
+        setPixel(i,bottomEdge, 6);
     }
-    for (int i=50; i<=190; i++)
+    for (int i=50; i<=bottomEdge; i++)
     {
         setPixel(10, i, 6);
-        setPixel(150, i, 6);
+        setPixel(rightEdge, i, 6);
     }
-    for (int x=1; x<10; x++)
+    for (int x=1; x<boardSize; x++)
     {
-        for (int i=10; i<=150; i++) {
+        for (int i=10; i<=rightEdge; i++) {
             setPixel(i, 50+(x*14), 6);
         }
-        for (int i=50; i<=190; i++) {
+        for (int i=50; i<=bottomEdge; i++) {
             setPixel(10+(x*14),i,6);
         }
     }
