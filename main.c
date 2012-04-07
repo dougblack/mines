@@ -2,7 +2,6 @@
 
 #include "main.h"
 
-#define MINE_NUM    10	
 
 enum {BLACKIDX, WHITEIDX, REDIDX, BLUEIDX, GREENIDX, YELLOWIDX, LIGHTGRAYIDX};
 u16 colors[] = {BLACK, WHITE, RED, BLUE, GREEN, YELLOW, LIGHTGRAY};
@@ -13,6 +12,8 @@ int correctFlags = 0;
 int showTitle = 1;
 int seed = 0;
 int playerwins = 0;
+int MINE_NUM = 10;
+int boardSize = 10;
 
     int
 main()
@@ -32,6 +33,9 @@ main()
         key_poll();
         if (key_hit(KEY_START)) {
             showTitle=0;
+        }
+        if (key_hit(KEY_UP)) {
+            MINE_NUM+=5;
         }
         seed++;
     }
