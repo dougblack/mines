@@ -4,8 +4,8 @@
 // Stores current and previous state of key register
 void key_poll()
 {
-	__key_prev = __key_curr;
-	__key_curr = ~REG_KEYINPUT & KEY_MASK;	
+  __key_prev = __key_curr;
+  __key_curr = ~REG_KEYINPUT & KEY_MASK;	
 }
 
 // Functions for getting states of curr/previous keys
